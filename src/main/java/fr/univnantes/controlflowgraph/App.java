@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class App {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
-		Node origin,nA,nB,nC,nD;
+		Node origin,nA,nB,nC,nD,n;
 		Arc a;
 		
 		/* Example :
@@ -56,6 +56,11 @@ public class App {
 			for(Arc arc : cur.getArcs()) {
 				queue.add(arc.getNext());
 			}
+		}
+		
+		for(int i=0;i<1000;i++) {
+			n = new Instruction("inst "+i);
+			System.out.println(n.toString());
 		}
 	}
 }
