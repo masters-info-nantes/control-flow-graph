@@ -22,4 +22,9 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <!-- 
+   	[NOT WORK] mvn deploy:deploy-file -Durl=repo/ -Dfile=../control-flow-graph/target/controlflowgraph-1.0-SNAPSHOT.jar -DgroupId=fr.univnantes.controlflowgraph -DartifactId=controlflowgraph -Dpackaging=jar -Dversion=1.0-SNAPSHOT 
+   	[WORK] mvn install:install-file -Dfile=target/controlflowgraph-1.0-SNAPSHOT.jar -DgroupId=fr.univnantes.controlflowgraph -DartifactId=controlflowgraph -Dpackaging=jar -Dversion=1.0-SNAPSHOT
+  -->
 </project>
