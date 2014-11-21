@@ -14,4 +14,8 @@ public class Condition extends Node {
 	public Condition() {
 		super(genNext());
 	}
+	
+	public Condition(String label) {
+		super(label, genNext());
+	}
 }

@@ -34,6 +34,11 @@ public class Instruction extends Node {
 		this.value = value;
 	}
 	
+	public Instruction(String label, String value) {
+		super(label, genNext());
+		this.value = value;
+	}
+	
 	public String getValue() {
 		return this.value;
 	}
