@@ -27,6 +27,10 @@ public abstract class Node {
 		return this.arcs;
 	}
 	
+	public String getLabel(){
+		return this.label;
+	}
+	
 	public void addArc(Arc a) {
 		this.arcs.add(a);
 	}
