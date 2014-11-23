@@ -21,7 +21,7 @@ git clone https://github.com/masterALMA2016/control-flow-graph.git
 Execute these commands in control-flow-graph root directory (where the pom.xml file is)
 ```
 mvn package
-mvn install:install-file -Dfile=target/controlflowgraph-1.0-SNAPSHOT.jar -DgroupId=fr.univnantes.controlflowgraph -DartifactId=controlflowgraph -Dpackaging=jar -Dversion=1.0-SNAPSHOT
+mvn install:install-file -Dfile=target/controlflowgraph-1.0.jar -DgroupId=fr.univnantes.controlflowgraph -DartifactId=controlflowgraph -Dpackaging=jar -Dversion=1.0
 ```
 
 Then edit your project pom.xml to add these lines

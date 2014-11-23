@@ -77,7 +77,7 @@ public abstract class Node extends Element {
 	 * @return a {@code Node} whose is equals to the {@code Node} in parameter if a {@code Node} correspond to it in graph starting by this {@code Node}; {@code null} otherwise.
 	 */
 	public Node findNode(Node n){
-		if(this.equals(n)) {
+		if(this.equals(n)){
 			return this;
 		} else if(this.isFinal()) {
 			return null;
