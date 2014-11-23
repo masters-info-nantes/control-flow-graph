@@ -1,23 +1,54 @@
 package fr.univnantes.controlflowgraph;
 
-public class Arc {
-	private String label;
+/** Class for represent Arc.
+ */
+public class Arc extends Element {
+	private String name;
 	private Node next;
 	
-	public Arc(String label, Node next) {
-		this.label = label;
+	/** Constructs a new {@code Arc}.
+	 * 
+	 * @param id the id of the new {@code Arc}. @see fr.univnantes.controlflowgraph.Element#Element(int).
+	 * @param name the name of the new {@code Arc}.
+	 * @param next the @see fr.univnantes.controlflowgraph.Node this {@code Arc} may target.
+	 */
+	public Arc(int id, String name, Node next) {
+		super(id);
+		init(name,next);
+	}
+	
+	/** Constructs a new {@code Arc}.
+	 * 
+	 * @param name the name of the new {@code Arc}.
+	 * @param next the @see fr.univnantes.controlflowgraph.Node this {@code Arc} may target.
+	 */
+	public Arc(String name, Node next) {
+		super();
+		init(name,next);
+	}
+	
+	private void init(String name, Node next) {
+		this.name = name;
 		this.next = next;
 	}
 	
-	public String getLabel() {
-		return this.label;
+	/** Gets the {@code name} of this {@code Arc}.
+	 * 
+	 * @return The {@code name} of this {@code Arc}.
+	 */
+	public String getName() {
+		return this.name;
 	}
 	
+	/** Gets the {@code Node} targeted by this {@code Arc}.
+	 * 
+	 * @return The {@code Node} targeted by this {@code Arc}.
+	 */
 	public Node getNext() {
 		return this.next;
 	}
 	
 	public String toString() {
-		return "label="+this.label+",next="+next.toString();
+		return super.toString()+",next="+next.toString();
 	}
 }
