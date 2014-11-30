@@ -1,21 +1,10 @@
 package fr.univnantes.controlflowgraph;
 
 import static org.junit.Assert.*;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import org.junit.Before;
 import org.junit.Test;
 
-import fr.univnantes.controlflowgraph.*;
+import java.io.IOException;
+import org.junit.Before;
 
 public class NodeTest {
 
@@ -73,37 +62,37 @@ public class NodeTest {
 	@Test
 	public void testFindNodeLinearExists() throws IOException{
 		Node n = graphLinear.findNode(graphLinearOneNode);
-		assetNotNull(n);
+		assertNotNull(n);
 	}
 	
 	@Test
 	public void testFindNodeLinearNotExists() throws IOException{
 		Node n = graphLinear.findNode(new Node("not exist"){});
-		assetNull(n);
+		assertNull(n);
 	}
 	
 	@Test
 	public void testFindNodeConditionExists() throws IOException{
 		Node n = graphCondition.findNode(graphConditionOneNode);
-		assetNotNull(n);
+		assertNotNull(n);
 	}
 	
 	@Test
 	public void testFindNodeConditionNotExists() throws IOException{
 		Node n = graphCondition.findNode(new Node("not exist"){});
-		assetNull(n);
+		assertNull(n);
 	}
 	
 	@Test
 	public void testFindNodeCycleExists() throws IOException{
 		Node n = graphCycle.findNode(graphCycleOneNode);
-		assetNotNull(n);
+		assertNotNull(n);
 	}
 	
 	@Test
 	public void testFindNodeCycleNotExists() throws IOException{
 		Node n = graphCycle.findNode(new Node("not exist"){});
-		assetNull(n);
+		assertNull(n);
 	}
 	
 	
