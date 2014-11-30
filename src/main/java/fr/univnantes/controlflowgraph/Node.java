@@ -2,6 +2,7 @@ package fr.univnantes.controlflowgraph;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /** Class for represent {@code Node}.
  * 
@@ -72,23 +73,42 @@ public abstract class Node extends Element {
 	
 	/** Finds a node in the graph starting by this {@code Node}.
 	 * 
-	 * @param n the {@code Node} to find
+	 * @param toFind the {@code Node} to find
 	 * 
 	 * @return a {@code Node} whose is equals to the {@code Node} in parameter if a {@code Node} correspond to it in graph starting by this {@code Node}; {@code null} otherwise.
 	 */
-	public Node findNode(Node n){
-		if(this.equals(n)) {
-			return this;
-		} else if(this.isFinal()) {
-			return null;
-		}
+	public Node findNode(Node toFind){
+		//~ if(this.equals(n)) {
+			//~ return this;
+		//~ } else if(this.isFinal()) {
+			//~ return null;
+		//~ }
+		//~ 
+		//~ Node node = null;
+		//~ for (Arc arc : arcs) {
+			//~ Node anode = arc.getNext().findNode(n);
+			//~ node = (anode != null) ? anode : node;
+		//~ }
+		//~ return node;
 		
-		Node node = null;
-		for (Arc arc : arcs) {
-			Node anode = arc.getNext().findNode(n);
-			node = (anode != null) ? anode : node;
+		LinkedList<Node> backList = new LinkedList<Node>();
+		LinkedList<Node> queue = new LinkedList<Node>();
+		queue.add(this);
+		Node cur = null, next = null;
+		while(!queue.isEmpty()) {
+			cur = queue.remove();
+			backList.add(cur);
+			for(Arc a : cur.getArcs()) {
+				next = a.getNext();
+				if(next.equals(toFind)) {
+					return this;
+				}
+				if(!queue.contains(next) && !backList.contains(next)) {
+					queue.add(next);
+				}
+			}
 		}
-		return node;
+		return null;
 	}
 	
 	/** Finds a node in the graph starting by this {@code Node}.

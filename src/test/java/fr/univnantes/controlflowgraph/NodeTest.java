@@ -9,16 +9,104 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import org.junit.Before;
 import org.junit.Test;
 
+import fr.univnantes.controlflowgraph.*;
+
 public class NodeTest {
 
+	Node graphLinear = null;
+	Node graphLinearOneNode = null;
+	Node graphCondition = null;
+	Node graphConditionOneNode = null;
+	Node graphCycle = null;
+	Node graphCycleOneNode = null;
+	
 	@Before
 	public void setUp() throws Exception {
+		Node n0,n1,n2,n3,n4,n5;
 		
+		n0 = new Node("n0"){};
+		n1 = new Node("n1"){};
+		n2 = new Node("n2"){};
+		n3 = new Node("n3"){};
+		n0.addArc(new Arc("n0->n1",n1));
+		n1.addArc(new Arc("n0->n1",n2));
+		n2.addArc(new Arc("n0->n1",n3));
+		graphLinear = n0;
+		graphLinearOneNode = n2;
+		
+		
+		n0 = new Node("n0"){};
+		n1 = new Node("n1"){};
+		n2 = new Node("n2"){};
+		n3 = new Node("n3"){};
+		n4 = new Node("n4"){};
+		n0.addArc(new Arc("n0->n1",n1));
+		n1.addArc(new Arc("n1->n2",n2));
+		n1.addArc(new Arc("n1->n3",n3));
+		n2.addArc(new Arc("n2->n4",n4));
+		n3.addArc(new Arc("n3->n4",n4));
+		graphCondition = n0;
+		graphConditionOneNode = n2;
+		
+		n0 = new Node("n0"){};
+		n1 = new Node("n1"){};
+		n2 = new Node("n2"){};
+		n3 = new Node("n3"){};
+		n4 = new Node("n4"){};
+		n5 = new Node("n5"){};
+		n0.addArc(new Arc("n0->n1",n1));
+		n1.addArc(new Arc("n1->n2",n2));
+		n2.addArc(new Arc("n2->n3",n3));
+		n3.addArc(new Arc("n3->n1",n1));
+		n1.addArc(new Arc("n1->n4",n4));
+		n4.addArc(new Arc("n4->n5",n5));
+		graphCycle = n0;
+		graphCycleOneNode = n5;
 	}
-
+	
+	@Test
+	public void testFindNodeLinearExists() throws IOException{
+		Node n = graphLinear.findNode(graphLinearOneNode);
+		assetNotNull(n);
+	}
+	
+	@Test
+	public void testFindNodeLinearNotExists() throws IOException{
+		Node n = graphLinear.findNode(new Node("not exist"){});
+		assetNull(n);
+	}
+	
+	@Test
+	public void testFindNodeConditionExists() throws IOException{
+		Node n = graphCondition.findNode(graphConditionOneNode);
+		assetNotNull(n);
+	}
+	
+	@Test
+	public void testFindNodeConditionNotExists() throws IOException{
+		Node n = graphCondition.findNode(new Node("not exist"){});
+		assetNull(n);
+	}
+	
+	@Test
+	public void testFindNodeCycleExists() throws IOException{
+		Node n = graphCycle.findNode(graphCycleOneNode);
+		assetNotNull(n);
+	}
+	
+	@Test
+	public void testFindNodeCycleNotExists() throws IOException{
+		Node n = graphCycle.findNode(new Node("not exist"){});
+		assetNull(n);
+	}
+	
+	
 /*
 	@Test
 	public void testFileDisplay() throws IOException{
