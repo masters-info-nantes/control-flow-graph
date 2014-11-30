@@ -63,6 +63,7 @@ public class NodeTest {
 	public void testFindNodeLinearExists() throws IOException{
 		Node n = graphLinear.findNode(graphLinearOneNode);
 		assertNotNull(n);
+		assertEquals(graphLinearOneNode, n);
 	}
 	
 	@Test
@@ -75,6 +76,7 @@ public class NodeTest {
 	public void testFindNodeConditionExists() throws IOException{
 		Node n = graphCondition.findNode(graphConditionOneNode);
 		assertNotNull(n);
+		assertEquals(graphConditionOneNode, n);
 	}
 	
 	@Test
@@ -87,6 +89,7 @@ public class NodeTest {
 	public void testFindNodeCycleExists() throws IOException{
 		Node n = graphCycle.findNode(graphCycleOneNode);
 		assertNotNull(n);
+		assertEquals(graphCycleOneNode, n);
 	}
 	
 	@Test

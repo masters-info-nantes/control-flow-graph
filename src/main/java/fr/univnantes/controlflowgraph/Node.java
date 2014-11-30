@@ -101,7 +101,7 @@ public abstract class Node extends Element {
 			for(Arc a : cur.getArcs()) {
 				next = a.getNext();
 				if(next.equals(toFind)) {
-					return this;
+					return next;
 				}
 				if(!queue.contains(next) && !backList.contains(next)) {
 					queue.add(next);
