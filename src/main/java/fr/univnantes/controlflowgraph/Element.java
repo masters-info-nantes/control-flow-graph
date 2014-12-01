@@ -49,6 +49,8 @@ public abstract class Element {
 	 * @return {@code true} if specified object other is equal to this {@code Element}; {@code false} otherwise.
 	 */
 	public boolean equals(Element other) {
+		if(other == null)
+			return false;
 		return this.id == other.id;
 	}
 	

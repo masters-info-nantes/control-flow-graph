@@ -6,56 +6,57 @@ import org.junit.Test;
 import java.io.IOException;
 import org.junit.Before;
 
-public class NodeTest {
-
-	Node graphLinear = null;
+public class GraphFactoryFindNodeTest {
+	
+	GraphFactory graphLinear = null;
 	Node graphLinearOneNode = null;
-	Node graphCondition = null;
+	GraphFactory graphCondition = null;
 	Node graphConditionOneNode = null;
-	Node graphCycle = null;
+	GraphFactory graphCycle = null;
 	Node graphCycleOneNode = null;
 	
 	@Before
 	public void setUp() throws Exception {
 		Node n0,n1,n2,n3,n4,n5;
 		
-		n0 = new Node("n0"){};
-		n1 = new Node("n1"){};
-		n2 = new Node("n2"){};
-		n3 = new Node("n3"){};
-		n0.addArc(new Arc("n0->n1",n1));
-		n1.addArc(new Arc("n0->n1",n2));
-		n2.addArc(new Arc("n0->n1",n3));
-		graphLinear = n0;
+		graphLinear = new GraphFactory();
+		n0 = graphLinear.makeInstruction("n0");
+		n1 = graphLinear.makeInstruction("n1");
+		n2 = graphLinear.makeInstruction("n2");
+		n3 = graphLinear.makeInstruction("n3");
+		n0.addArc(graphLinear.makeArc("n0->n1",n1));
+		n1.addArc(graphLinear.makeArc("n0->n1",n2));
+		n2.addArc(graphLinear.makeArc("n0->n1",n3));
 		graphLinearOneNode = n2;
 		
 		
-		n0 = new Node("n0"){};
-		n1 = new Node("n1"){};
-		n2 = new Node("n2"){};
-		n3 = new Node("n3"){};
-		n4 = new Node("n4"){};
-		n0.addArc(new Arc("n0->n1",n1));
-		n1.addArc(new Arc("n1->n2",n2));
-		n1.addArc(new Arc("n1->n3",n3));
-		n2.addArc(new Arc("n2->n4",n4));
-		n3.addArc(new Arc("n3->n4",n4));
-		graphCondition = n0;
+		graphCondition = new GraphFactory();
+		n0 = graphCondition.makeInstruction("n0");
+		n1 = graphCondition.makeInstruction("n1");
+		n2 = graphCondition.makeInstruction("n2");
+		n3 = graphCondition.makeInstruction("n3");
+		n4 = graphCondition.makeInstruction("n4");
+		n0.addArc(graphCondition.makeArc("n0->n1",n1));
+		n1.addArc(graphCondition.makeArc("n1->n2",n2));
+		n1.addArc(graphCondition.makeArc("n1->n3",n3));
+		n2.addArc(graphCondition.makeArc("n2->n4",n4));
+		n3.addArc(graphCondition.makeArc("n3->n4",n4));
 		graphConditionOneNode = n2;
 		
-		n0 = new Node("n0"){};
-		n1 = new Node("n1"){};
-		n2 = new Node("n2"){};
-		n3 = new Node("n3"){};
-		n4 = new Node("n4"){};
-		n5 = new Node("n5"){};
-		n0.addArc(new Arc("n0->n1",n1));
-		n1.addArc(new Arc("n1->n2",n2));
-		n2.addArc(new Arc("n2->n3",n3));
-		n3.addArc(new Arc("n3->n1",n1));
-		n1.addArc(new Arc("n1->n4",n4));
-		n4.addArc(new Arc("n4->n5",n5));
-		graphCycle = n0;
+		
+		graphCycle = new GraphFactory();
+		n0 = graphCycle.makeInstruction("n0");
+		n1 = graphCycle.makeInstruction("n1");
+		n2 = graphCycle.makeInstruction("n2");
+		n3 = graphCycle.makeInstruction("n3");
+		n4 = graphCycle.makeInstruction("n4");
+		n5 = graphCycle.makeInstruction("n5");
+		n0.addArc(graphCycle.makeArc("n0->n1",n1));
+		n1.addArc(graphCycle.makeArc("n1->n2",n2));
+		n2.addArc(graphCycle.makeArc("n2->n3",n3));
+		n3.addArc(graphCycle.makeArc("n3->n1",n1));
+		n1.addArc(graphCycle.makeArc("n1->n4",n4));
+		n4.addArc(graphCycle.makeArc("n4->n5",n5));
 		graphCycleOneNode = n5;
 	}
 	

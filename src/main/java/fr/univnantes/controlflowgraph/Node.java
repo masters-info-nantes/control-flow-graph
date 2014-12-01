@@ -78,19 +78,8 @@ public abstract class Node extends Element {
 	 * @return a {@code Node} whose is equals to the {@code Node} in parameter if a {@code Node} correspond to it in graph starting by this {@code Node}; {@code null} otherwise.
 	 */
 	public Node findNode(Node toFind){
-		//~ if(this.equals(n)) {
-			//~ return this;
-		//~ } else if(this.isFinal()) {
-			//~ return null;
-		//~ }
-		//~ 
-		//~ Node node = null;
-		//~ for (Arc arc : arcs) {
-			//~ Node anode = arc.getNext().findNode(n);
-			//~ node = (anode != null) ? anode : node;
-		//~ }
-		//~ return node;
-		
+		if(toFind == null)
+			return null;
 		LinkedList<Node> backList = new LinkedList<Node>();
 		LinkedList<Node> queue = new LinkedList<Node>();
 		queue.add(this);
