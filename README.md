@@ -3,6 +3,12 @@ control-flow-graph
 
 Model of a control flow graph in Java
 
+Authors
+-----------
+- Pena Anthony
+- Brondin Nicolas
+- Bardon Jérémy
+
 Compile
 ---
 
